@@ -1,3 +1,4 @@
+<?php include "./config.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,23 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script>
-	var baseurl = "http://" + window.location.hostname + "/phpsandbox/server.php";
-	  
-	$(document).on("click","#preview", function(e){
-		var codes = $('#htmlcontent').val();
-		
-		$.ajax({
-            url: baseurl,
-            data: {
-				codes : codes
-				},
-            dataType: "json",
-            type: "post",
-            success: function (res) {
-				$("#output").html(res);
-            }
-        });
-	});
+	
   </script>
   <style>
   #output, #htmlcontent{
@@ -48,6 +33,7 @@
     <div class="col-sm-6">
       <h4>Input</h4>
       <p>Enter here html or php codes <button id="preview">Try</button></p>
+      <p>Real-time Preview <input type="checkbox" id="realtime_toggle"></p>
     </div>
     <div class="col-sm-6">
       <h3>Output available here</h3>
@@ -63,11 +49,44 @@
     </div>
     <div class="col-sm-6">
       <div id="output">
-		<?php echo file_get_contents($baseurl . "output.php"); ?>
+		<?php echo file_get_contents($config['baseurl'] . "output.php"); ?>
       </div>
     </div>
   </div>
 </div>
+<script>
+	  
+	function __render(){
+		  
+		var codes = $('#htmlcontent').val();
+		
+		$.ajax({
+            url: "server.php",
+            data: {
+				codes : codes
+				},
+            dataType: "json",
+            type: "post",
+            success: function (res) {
+				$("#output").html(res);
+            }
+        });
+	}
+	
+	  
+	$(document).on("click","#preview", function(e){
+		__render();
+	});
+	
+	$("#htmlcontent").keyup(function(){
+		
+		if($("#realtime_toggle").is(":checked")){	
+			__render();
+		} 
+	});
+	
+
+</script>
 
 </body>
 </html>
