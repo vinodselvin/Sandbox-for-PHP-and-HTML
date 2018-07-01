@@ -1,2 +1,2 @@
 <?php
-$config['baseurl'] = "http://localhost/opensource/hosted/Sandbox-for-PHP-and-HTML/";
+$config['baseurl'] = "http://localhost/Sandbox-for-PHP-and-HTML/";

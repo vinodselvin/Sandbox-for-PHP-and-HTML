@@ -68,10 +68,10 @@ $myfile = fopen($_COOKIE['continue'].".php", "w") or die("Unable to open file!")
 
         <div class="jumbotron text-center">
             <h1>SandBox for Testing</h1>
-            <p>Powered by SwitchMe Technologies</p> 
+            <p>Powered by <a href="https://github.com/vinodselvin/">@VinodSelvin</a></p> 
         </div>
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
                     <h4>Input</h4>
