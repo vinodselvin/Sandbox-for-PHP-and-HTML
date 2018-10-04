@@ -1,0 +1,28 @@
+.body{
+  background-color: black;
+  color:white;
+}
+
+.money-input{
+  display:block;
+  border:0px;
+  border-bottom: 2px solid lightgray;
+  outline: none;
+  background: transparent;
+  text-align:right;
+  font-size: 25px;
+  width: 100px;
+  padding-right: 5px;
+}
+    
+.money-input::-webkit-inner-spin-button,
+.money-input::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.money-input:focus{
+  outline:none;
+  border-bottom: 2px solid orange;
+  transition: border 1s;
+}
